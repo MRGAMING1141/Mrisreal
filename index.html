@@ -2,122 +2,383 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title> IND Lua Obfuscator BY MR</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IND Lua Obfuscator BY MR</title>
 <style>
+    :root {
+        --bg: #06080f;
+        --card: rgba(14, 18, 30, 0.82);
+        --line: rgba(0, 255, 204, 0.22);
+        --text: #e9f8ff;
+        --muted: #9eb6c5;
+        --accent: #00ffd0;
+        --accent-2: #4bc4ff;
+        --danger: #ff6d8f;
+    }
+
+    * {
+        box-sizing: border-box;
+    }
+
     body {
-        background: #0f0f0f;
-        color: white;
-        font-family: Arial;
-        text-align: center;
+        margin: 0;
+        min-height: 100vh;
+        color: var(--text);
+        font-family: Inter, Segoe UI, Arial, sans-serif;
+        background:
+            radial-gradient(1200px 800px at 10% -10%, rgba(0, 255, 208, 0.16), transparent 50%),
+            radial-gradient(900px 600px at 90% 0%, rgba(75, 196, 255, 0.14), transparent 45%),
+            linear-gradient(150deg, #05060c 0%, #0a0e1a 55%, #06080f 100%);
+        display: grid;
+        place-items: center;
+        padding: 24px;
     }
+
+    .shell {
+        width: min(1100px, 100%);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: 0 25px 70px rgba(0, 0, 0, 0.45), inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
+    }
+
+    .topbar {
+        padding: 20px 24px;
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        background: linear-gradient(90deg, rgba(0, 255, 208, 0.08), rgba(75, 196, 255, 0.08));
+    }
+
     h1 {
-        margin-top: 20px;
+        margin: 0;
+        font-size: clamp(1.2rem, 2.6vw, 1.8rem);
+        letter-spacing: 0.2px;
     }
-    textarea {
-        width: 90%;
-        height: 150px;
-        margin: 10px;
+
+    .subtitle {
+        margin: 4px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+    }
+
+    .badge {
+        padding: 7px 12px;
+        border: 1px solid rgba(0, 255, 208, 0.45);
+        border-radius: 999px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: var(--accent);
+        background: rgba(0, 255, 208, 0.08);
+    }
+
+    .content {
+        padding: 20px;
+        display: grid;
+        gap: 14px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .panel {
+        background: rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        border-radius: 14px;
         padding: 10px;
-        background: #1a1a1a;
-        color: #00ffcc;
-        border: none;
-        border-radius: 10px;
     }
+
+    .label {
+        font-size: 0.86rem;
+        color: var(--muted);
+        margin: 0 0 8px;
+    }
+
+    textarea {
+        width: 100%;
+        min-height: 260px;
+        resize: vertical;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 12px;
+        padding: 12px;
+        background: #0a0f1b;
+        color: #d5fffb;
+        font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+        line-height: 1.45;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea:focus {
+        border-color: rgba(0, 255, 208, 0.55);
+        box-shadow: 0 0 0 3px rgba(0, 255, 208, 0.12);
+    }
+
+    .controls {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 10px;
+    }
+
     button {
-        padding: 10px 20px;
-        margin: 10px;
-        border: none;
+        border: 0;
         border-radius: 10px;
-        background: #00ffcc;
-        color: black;
-        font-weight: bold;
+        padding: 10px 16px;
+        font-weight: 700;
         cursor: pointer;
+        transition: transform 0.15s ease, filter 0.2s ease;
     }
+
     button:hover {
-        background: #00ccaa;
+        transform: translateY(-1px);
+        filter: brightness(1.06);
+    }
+
+    .primary {
+        color: #041813;
+        background: linear-gradient(135deg, var(--accent), #80ffe8);
+    }
+
+    .secondary {
+        color: #00141f;
+        background: linear-gradient(135deg, var(--accent-2), #9ddfff);
+    }
+
+    .ghost {
+        color: #ffd4de;
+        border: 1px solid rgba(255, 109, 143, 0.4);
+        background: rgba(255, 109, 143, 0.08);
+    }
+
+    select {
+        appearance: none;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 10px;
+        padding: 10px 12px;
+        color: var(--text);
+        background: #101a2c;
+        font-weight: 600;
+    }
+
+    .status {
+        margin-left: auto;
+        color: var(--muted);
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    @media (max-width: 900px) {
+        .grid {
+            grid-template-columns: 1fr;
+        }
+
+        textarea {
+            min-height: 210px;
+        }
+
+        .status {
+            width: 100%;
+            margin-left: 0;
+        }
     }
 </style>
 </head>
-
 <body>
 
-<h1>🔥 IND Lua Obfuscator</h1>
+<div class="shell">
+    <div class="topbar">
+        <div>
+            <h1>🔥 IND Lua Obfuscator</h1>
+            <p class="subtitle">Premium UI + stronger multi-layer obfuscation pipeline.</p>
+        </div>
+        <span class="badge">BY MR</span>
+    </div>
 
-<textarea id="input" placeholder="Paste your Lua script here..."></textarea><br>
+    <div class="content">
+        <div class="controls">
+            <button class="primary" onclick="obfuscate()">Obfuscate</button>
+            <button class="secondary" onclick="copyOutput()">Copy Output</button>
+            <button class="ghost" onclick="clearAll()">Clear</button>
 
-<button onclick="obfuscate()">Obfuscate</button>
-<button onclick="copyOutput()">Copy Output</button>
+            <select id="level" title="Obfuscation Level">
+                <option value="standard">Level: Standard</option>
+                <option value="hard" selected>Level: Hard</option>
+                <option value="extreme">Level: Extreme</option>
+            </select>
 
-<textarea id="output" placeholder="Obfuscated script will appear here..."></textarea>
+            <span class="status" id="status">Ready.</span>
+        </div>
+
+        <div class="grid">
+            <div class="panel">
+                <p class="label">Input Lua Script</p>
+                <textarea id="input" placeholder="Paste your Lua script here..."></textarea>
+            </div>
+            <div class="panel">
+                <p class="label">Obfuscated Output</p>
+                <textarea id="output" placeholder="Obfuscated script will appear here..."></textarea>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-function randomName(len = 12) {
-    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    let name = "";
+function randomName(min = 9, max = 18) {
+    const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    const len = Math.floor(Math.random() * (max - min + 1)) + min;
+    let name = '_';
     for (let i = 0; i < len; i++) {
         name += chars[Math.floor(Math.random() * chars.length)];
     }
     return name;
 }
 
-function encode(str) {
-    let result = "";
+function randomInt(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function stringToByteTable(str, key) {
+    const out = [];
     for (let i = 0; i < str.length; i++) {
-        result += "\\" + str.charCodeAt(i);
+        out.push(str.charCodeAt(i) ^ ((key + i * 7) % 251));
     }
-    return result;
+    return out;
 }
 
-function generateJunk(amount = 8) {
-    let junk = "";
-    for (let i = 0; i < amount; i++) {
-        let varName = randomName();
-        let num = Math.floor(Math.random() * 90000) + 10000;
-        junk += `local ${varName} = ${num};`;
-        junk += `for i=1,1 do ${varName}=${varName} end;`;
+function shuffleArray(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
     }
-    return junk;
+    return a;
 }
 
-function wrapExecution(payloadVar) {
-    let func = randomName();
-    let fake = randomName();
+function generateJunkBlock(lines = 20) {
+    const blocks = [];
+    for (let i = 0; i < lines; i++) {
+        const v1 = randomName();
+        const v2 = randomName();
+        const n1 = randomInt(20000, 900000);
+        const n2 = randomInt(33, 777);
+        blocks.push(`local ${v1} = ${n1}`);
+        blocks.push(`local ${v2} = (${v1} % ${n2}) + ${randomInt(10, 90)}`);
+        blocks.push(`if ${v2} == -1 then ${v1} = ${v1} + 1 end`);
+    }
+    return blocks.join('\n');
+}
+
+function buildOpaquePredicateLayer(depth = 2) {
+    let code = '';
+    for (let i = 0; i < depth; i++) {
+        const a = randomName();
+        const b = randomName();
+        const c = randomName();
+        code += `local ${a}=${randomInt(200, 900)}\n`;
+        code += `local ${b}=${randomInt(2, 8)}\n`;
+        code += `local ${c}=(${a}%${b})\n`;
+        code += `if (${c}~=${c}) then error('x') end\n`;
+    }
+    return code;
+}
+
+function buildRuntime(byteArray, key, level) {
+    const byteTableName = randomName();
+    const decodeName = randomName();
+    const joinName = randomName();
+    const execName = randomName();
+    const envName = randomName();
+    const gateName = randomName();
+
+    const sourcePairs = byteArray.map((v, i) => ({ idx: i + 1, val: v }));
+    const shuffled = shuffleArray(sourcePairs);
+
+    const assignments = shuffled.map(pair => `[${pair.idx}]=${pair.val}`).join(',');
+
+    const junkAmount = level === 'extreme' ? 40 : level === 'hard' ? 26 : 16;
+    const predicateDepth = level === 'extreme' ? 6 : level === 'hard' ? 4 : 2;
 
     return `
-local function ${func}()
-    local ${fake} = true
-    if ${fake} then
-        return loadstring(${payloadVar})
-    else
-        return function() end
+${generateJunkBlock(junkAmount)}
+${buildOpaquePredicateLayer(predicateDepth)}
+local ${byteTableName}={${assignments}}
+local function ${decodeName}(t,k)
+    local o={}
+    for i=1,#t do
+        local b=t[i]
+        o[i]=string.char(((b ~ ((k + i*7) % 251)) % 256))
+    end
+    return table.concat(o)
+end
+local function ${joinName}(f)
+    local t={}
+    for i=1,#f do t[i]=f[i] end
+    return t
+end
+local ${envName}=(_G and _G) or getfenv and getfenv() or _ENV
+local ${gateName}=(${randomInt(1000, 9000)} % ${randomInt(3, 9)})
+if ${gateName} >= 0 then
+    local ${execName}=loadstring(${decodeName}(${joinName}(${byteTableName}),${key}))
+    if ${execName} then
+        ${execName}()
     end
 end
-
-${func}()()
+${generateJunkBlock(Math.floor(junkAmount / 2))}
 `;
 }
 
 function obfuscate() {
-    let input = document.getElementById("input").value;
-    let encoded = encode(input);
+    const input = document.getElementById('input').value;
+    const outputEl = document.getElementById('output');
+    const level = document.getElementById('level').value;
+    const status = document.getElementById('status');
 
-    let payloadVar = randomName();
+    if (!input.trim()) {
+        status.textContent = 'Please paste a Lua script first.';
+        return;
+    }
 
-    let finalCode = "";
-    finalCode += generateJunk();
-    finalCode += `\nlocal ${payloadVar} = "${encoded}";\n`;
-    finalCode += generateJunk();
-    finalCode += wrapExecution(payloadVar);
-    finalCode += generateJunk();
+    const key = randomInt(71, 201);
+    const bytes = stringToByteTable(input, key);
+    const finalCode = buildRuntime(bytes, key, level);
 
-    document.getElementById("output").value = finalCode;
+    outputEl.value = finalCode;
+    status.textContent = `Done: ${level.toUpperCase()} obfuscation | ${bytes.length} bytes encoded`;
 }
 
-function copyOutput() {
-    let output = document.getElementById("output");
-    output.select();
-    document.execCommand("copy");
-    alert("Copied!");
+async function copyOutput() {
+    const output = document.getElementById('output').value;
+    const status = document.getElementById('status');
+
+    if (!output.trim()) {
+        status.textContent = 'Nothing to copy yet.';
+        return;
+    }
+
+    try {
+        await navigator.clipboard.writeText(output);
+        status.textContent = 'Copied obfuscated output to clipboard.';
+    } catch (err) {
+        const outputArea = document.getElementById('output');
+        outputArea.select();
+        document.execCommand('copy');
+        status.textContent = 'Copied via fallback method.';
+    }
+}
+
+function clearAll() {
+    document.getElementById('input').value = '';
+    document.getElementById('output').value = '';
+    document.getElementById('status').textContent = 'Cleared.';
 }
 </script>
 
