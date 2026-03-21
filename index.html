@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lua Obfuscator</title>
+<style>
+    body {
+        background: #0f0f0f;
+        color: white;
+        font-family: Arial;
+        text-align: center;
+    }
+    h1 {
+        margin-top: 20px;
+    }
+    textarea {
+        width: 90%;
+        height: 150px;
+        margin: 10px;
+        padding: 10px;
+        background: #1a1a1a;
+        color: #00ffcc;
+        border: none;
+        border-radius: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        background: #00ffcc;
+        color: black;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    button:hover {
+        background: #00ccaa;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>🔥 Lua Obfuscator</h1>
+
+<textarea id="input" placeholder="Paste your Lua script here..."></textarea><br>
+
+<button onclick="obfuscate()">Obfuscate</button>
+<button onclick="copyOutput()">Copy Output</button>
+
+<textarea id="output" placeholder="Obfuscated script will appear here..."></textarea>
+
+<script>
+function randomName(len = 12) {
+    const chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    let name = "";
+    for (let i = 0; i < len; i++) {
+        name += chars[Math.floor(Math.random() * chars.length)];
+    }
+    return name;
+}
+
+function encode(str) {
+    let result = "";
+    for (let i = 0; i < str.length; i++) {
+        result += "\\" + str.charCodeAt(i);
+    }
+    return result;
+}
+
+function generateJunk(amount = 8) {
+    let junk = "";
+    for (let i = 0; i < amount; i++) {
+        let varName = randomName();
+        let num = Math.floor(Math.random() * 90000) + 10000;
+        junk += `local ${varName} = ${num};`;
+        junk += `for i=1,1 do ${varName}=${varName} end;`;
+    }
+    return junk;
+}
+
+function wrapExecution(payloadVar) {
+    let func = randomName();
+    let fake = randomName();
+
+    return `
+local function ${func}()
+    local ${fake} = true
+    if ${fake} then
+        return loadstring(${payloadVar})
+    else
+        return function() end
+    end
+end
+
+${func}()()
+`;
+}
+
+function obfuscate() {
+    let input = document.getElementById("input").value;
+    let encoded = encode(input);
+
+    let payloadVar = randomName();
+
+    let finalCode = "";
+    finalCode += generateJunk();
+    finalCode += `\nlocal ${payloadVar} = "${encoded}";\n`;
+    finalCode += generateJunk();
+    finalCode += wrapExecution(payloadVar);
+    finalCode += generateJunk();
+
+    document.getElementById("output").value = finalCode;
+}
+
+function copyOutput() {
+    let output = document.getElementById("output");
+    output.select();
+    document.execCommand("copy");
+    alert("Copied!");
+}
+</script>
+
+</body>
+</html>
