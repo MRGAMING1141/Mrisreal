@@ -8,86 +8,87 @@
 body {
     margin: 0;
     font-family: system-ui;
-    background: #0f172a;
+    background: linear-gradient(135deg,#020617,#0f172a);
     color: #e5e7eb;
 }
 
-/* NAVBAR */
+/* NAV */
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px;
-    background: #020617;
+    padding: 18px 25px;
 }
 
 nav h2 {
     margin: 0;
     color: #60a5fa;
+    font-weight: 600;
 }
 
 /* HERO */
 .hero {
     text-align: center;
-    padding: 80px 20px;
+    padding: 70px 20px 40px;
 }
 
 .hero h1 {
-    font-size: 36px;
-    margin-bottom: 10px;
+    font-size: 38px;
+    margin: 0;
 }
 
 .hero p {
     color: #94a3b8;
+    margin-top: 10px;
 }
 
+/* BUTTON */
 .btn {
     display: inline-block;
     margin-top: 20px;
-    padding: 14px 20px;
-    background: #2563eb;
+    padding: 14px 22px;
+    background: linear-gradient(135deg,#2563eb,#3b82f6);
     color: white;
-    border-radius: 10px;
+    border-radius: 12px;
     text-decoration: none;
+    font-weight: 500;
+    border: none;
 }
 
 /* SECTION */
 .section {
     padding: 40px 20px;
+    max-width: 500px;
+    margin: auto;
 }
 
-/* FEATURES */
-.features {
-    display: grid;
-    gap: 15px;
-}
-
+/* CARD */
 .card {
-    background: #020617;
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
     padding: 20px;
-    border-radius: 12px;
     border: 1px solid #1e293b;
+    margin-bottom: 20px;
 }
 
-/* PRICING */
-.price {
-    text-align: center;
-}
-
-/* FORM */
+/* INPUT */
 input {
     width: 100%;
-    padding: 12px;
-    margin-top: 10px;
+    padding: 13px;
+    margin-top: 12px;
     border-radius: 10px;
     border: 1px solid #1e293b;
     background: #020617;
     color: white;
+    font-size: 14px;
 }
 
+/* DOMAIN PREVIEW */
 .domain {
-    margin-top: 8px;
+    margin-top: 10px;
     font-size: 13px;
     color: #38bdf8;
+    word-break: break-all;
 }
 
 /* FLOAT BUTTON */
@@ -100,6 +101,8 @@ input {
     border-radius: 50px;
     color: white;
     text-decoration: none;
+    font-size: 14px;
+    box-shadow: 0 0 15px rgba(225,48,108,0.6);
 }
 </style>
 </head>
@@ -113,56 +116,40 @@ input {
 
 <!-- HERO -->
 <div class="hero">
-    <h1>Launch Your Website for ₹50/month</h1>
-    <p>Fast, simple and affordable hosting for everyone</p>
+    <h1>Launch Your Website</h1>
+    <p>Simple hosting for ₹50/month</p>
     <a href="#start" class="btn">Get Started</a>
 </div>
 
-<!-- FEATURES -->
-<div class="section">
-    <h2>Why Choose Us</h2>
-
-    <div class="features">
-        <div class="card">⚡ Fast Hosting</div>
-        <div class="card">📁 Easy Upload</div>
-        <div class="card">💬 Direct Support</div>
-    </div>
-</div>
-
-<!-- PRICING -->
-<div class="section price">
-    <h2>Simple Pricing</h2>
-    <h1>₹50/month</h1>
-    <p>No hidden fees</p>
-</div>
-
-<!-- FORM -->
+<!-- FORM SECTION -->
 <div class="section" id="start">
-    <h2>Get Started</h2>
 
-    <input id="name" placeholder="Your Name">
-    <input id="site" placeholder="Website Name" oninput="updateDomain()">
+    <div class="card">
+        <h3>Enter Details</h3>
 
-    <div class="domain" id="domainPreview">yourname.github.io</div>
+        <input id="name" placeholder="Your Name">
+        <input id="site" placeholder="Website Name" oninput="updateDomain()">
 
-    <button class="btn" onclick="showPayment()">Continue</button>
+        <div class="domain" id="domainPreview">
+            https://mrgaming1141.github.io/yourname/
+        </div>
 
-    <div id="paymentBox" style="display:none; margin-top:20px;">
-        <p>Complete your order by contacting us:</p>
+        <button class="btn" onclick="showPayment()">Continue</button>
+    </div>
 
-        <a href="https://www.instagram.com/MR_GAMING1141/" target="_blank" class="btn">
+    <!-- PAYMENT -->
+    <div class="card" id="paymentBox" style="display:none;">
+        <h3>Complete Setup</h3>
+        <p style="color:#94a3b8;font-size:14px;">
+        Click below and message your website name on Instagram.
+        </p>
+
+        <!-- FIXED REDIRECT -->
+        <a id="instaBtn" href="https://www.instagram.com/MR_GAMING1141/" target="_blank" class="btn">
             Pay & Chat on Instagram
         </a>
     </div>
-</div>
 
-<!-- FAQ -->
-<div class="section">
-    <h2>FAQ</h2>
-
-    <div class="card">❓ How do I start? → Click Get Started</div>
-    <div class="card">💳 How to pay? → Contact via Instagram</div>
-    <div class="card">🌐 Domain? → GitHub pages supported</div>
 </div>
 
 <!-- FLOAT CHAT -->
@@ -172,14 +159,18 @@ input {
 
 <script>
 function updateDomain() {
-    let name = document.getElementById("site").value;
+    let name = document.getElementById("site").value.trim().toLowerCase();
+
+    // clean text
+    name = name.replace(/\s+/g, "-").replace(/[^a-z0-9-]/g, "");
+
     document.getElementById("domainPreview").innerText =
-        (name || "yourname") + ".github.io";
+        "https://mrgaming1141.github.io/" + (name || "yourname") + "/";
 }
 
 function showPayment() {
-    let name = document.getElementById("name").value;
-    let site = document.getElementById("site").value;
+    let name = document.getElementById("name").value.trim();
+    let site = document.getElementById("site").value.trim();
 
     if (!name || !site) {
         alert("Please fill all details");
