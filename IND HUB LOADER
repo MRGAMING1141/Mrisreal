@@ -22,7 +22,7 @@ local Window = Rayfield:CreateWindow({
 local Main = Window:CreateTab("Scripts", 7734053495)
 
 Main:CreateButton({
-    Name = "+1 Keyboard Escape",
+    Name = "+1 Speed Keyboard Escape",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
@@ -40,7 +40,7 @@ Main:CreateButton({
 })
 
 Main:CreateButton({
-    Name = "Flick Script",
+    Name = "Flick",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
@@ -58,7 +58,7 @@ Main:CreateButton({
 })
 
 Main:CreateButton({
-    Name = "Grow A Garden Script",
+    Name = "Grow A Garden 2",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
@@ -66,11 +66,19 @@ Main:CreateButton({
     end
 })
 Main:CreateButton({
-    Name = "Brookhaven Script",
+    Name = "Brookhaven",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/RMvwRN36n4vOfJP7/raw"))()
+    end
+})
+Main:CreateButton({
+    Name = "Volleyball Legends",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/gidKjOifAA2gZiWv/raw"))()
     end
 })
 local Credits = Window:CreateTab("Credits", 7734056608)
