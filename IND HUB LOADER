@@ -81,6 +81,15 @@ Main:CreateButton({
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/gidKjOifAA2gZiWv/raw"))()
     end
 })
+Main:CreateButton({
+    Name = "Sell Lemons Script",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/abBO7hcORroFH7j5/raw"))()
+    end
+})
+
 local Credits = Window:CreateTab("Credits", 7734056608)
 
 Credits:CreateParagraph({
