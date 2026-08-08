@@ -94,7 +94,7 @@ Main:CreateButton({
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/3AdCoAK6ozCbjoUg/raw"))()
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/rNz3ZuxQdHIZCTUE/raw"))()
     end
 })
 
