@@ -29,6 +29,14 @@ Main:CreateButton({
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/InOk0QwVtIZsE49c/raw"))()
     end
 })
+Main:CreateButton({
+    Name = "Muscle Legends Script",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/PJKivrKptH28qYFQ/raw"))()
+    end
+})
 
 Main:CreateButton({
     Name = "Throw A Coin",
