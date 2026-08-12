@@ -32,7 +32,7 @@ Main:CreateButton({
 Main:CreateButton({
     Name = "Muscle Legends Script",
     Callback = function()
-        Rayfield:Destroy()
+    
         task.wait(0.1)
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/3kP5jucTHjzgYul9/raw"))()
     end
