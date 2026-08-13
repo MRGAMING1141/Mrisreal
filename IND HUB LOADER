@@ -54,7 +54,14 @@ Main:CreateButton({
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/6tMKYInXbGaYwlx0/raw"))()
     end
 })
-
+Main:CreateButton({
+    Name = "Kick A Ball To Space",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/k1q2QxlIL5MBLhYE/raw"))()
+    end
+})
 Main:CreateButton({
     Name = "Flick",
     Callback = function()
