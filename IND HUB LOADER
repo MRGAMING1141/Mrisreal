@@ -1,143 +1,224 @@
+
 loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/2z1yXs8JaN5e4fcq/raw"))()
 
+--[[
+    ============================================================
+                     IND HUB | RAYFIELD EDITION
+                     MADE BY MR_GAMING1141
+    ============================================================
+]]
+
+--// Rayfield
 local Rayfield = loadstring(game:HttpGet("https://sirius.menu/rayfield"))()
 
+--// Window
 local Window = Rayfield:CreateWindow({
     Name = "IND HUB",
     Icon = 7733960981,
     LoadingTitle = "IND HUB",
     LoadingSubtitle = "Made By MR_GAMING1141",
+
     Theme = "DarkBlue",
+
     ConfigurationSaving = {
         Enabled = true,
         FolderName = "INDHUB",
         FileName = "Config"
     },
+
     Discord = {
         Enabled = false
     },
+
     KeySystem = false
 })
 
+--// Scripts Tab
 local Main = Window:CreateTab("Scripts", 7734053495)
 
+--// +1 Speed Keyboard Escape
 Main:CreateButton({
     Name = "+1 Speed Keyboard Escape",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/InOk0QwVtIZsE49c/raw"))()
-    end
-})
-Main:CreateButton({
-    Name = "Muscle Legends Script",
-    Callback = function()
-    
-        task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/3kP5jucTHjzgYul9/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/InOk0QwVtIZsE49c/raw"
+        ))()
     end
 })
 
+--// Muscle Legends
+Main:CreateButton({
+    Name = "Muscle Legends Script",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/3kP5jucTHjzgYul9/raw"
+        ))()
+    end
+})
+
+--// Throw A Coin
 Main:CreateButton({
     Name = "Throw A Coin",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/JFjkaXRmKHPTZbzS/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/JFjkaXRmKHPTZbzS/raw"
+        ))()
     end
 })
+
+--// Muscle Beach Arena
 Main:CreateButton({
     Name = "Muscle Beach Arena",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/6tMKYInXbGaYwlx0/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/6tMKYInXbGaYwlx0/raw"
+        ))()
     end
 })
+
+--// Kick A Ball To Space
 Main:CreateButton({
     Name = "Kick A Ball To Space",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/k1q2QxlIL5MBLhYE/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/k1q2QxlIL5MBLhYE/raw"
+        ))()
     end
 })
+
+--// Flick
 Main:CreateButton({
     Name = "Flick",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/NvOBgkwE4WL6W3DM/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/NvOBgkwE4WL6W3DM/raw"
+        ))()
     end
 })
+
+--// Jump To Steal A Soccer Player
 Main:CreateButton({
     Name = "Jump To Steal A Soccer Player",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/fvhGRbqS7JEow9O6/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/fvhGRbqS7JEow9O6/raw"
+        ))()
     end
 })
-```1
 
+--// Kick A Lucky Block
 Main:CreateButton({
     Name = "Kick A Lucky Block",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/AwZVUmGv7dmzGoWV/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/AwZVUmGv7dmzGoWV/raw"
+        ))()
     end
 })
 
+--// Grow A Garden 2
 Main:CreateButton({
     Name = "Grow A Garden 2",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/7eF32NkpyVk0Dvqg/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/7eF32NkpyVk0Dvqg/raw"
+        ))()
     end
 })
+
+--// Brookhaven
 Main:CreateButton({
     Name = "Brookhaven",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/RMvwRN36n4vOfJP7/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/RMvwRN36n4vOfJP7/raw"
+        ))()
     end
 })
+
+--// Volleyball Legends
 Main:CreateButton({
     Name = "Volleyball Legends",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/gidKjOifAA2gZiWv/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/gidKjOifAA2gZiWv/raw"
+        ))()
     end
 })
+
+--// Sell Lemons
 Main:CreateButton({
     Name = "Sell Lemons Script",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/abBO7hcORroFH7j5/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/abBO7hcORroFH7j5/raw"
+        ))()
     end
 })
+
+--// +1 Backflip Obby Escape
 Main:CreateButton({
     Name = "+1 Backflip Obby Escape",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/0lLYWLdGRAHZSAKx/raw"))()
-  end
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/0lLYWLdGRAHZSAKx/raw"
+        ))()
+    end
 })
+
+--// +1 Pickaxe Swing
 Main:CreateButton({
     Name = "+1 Pickaxe Swing",
     Callback = function()
         Rayfield:Destroy()
         task.wait(0.1)
-        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/DOb7SdjY8EOuXE4D/raw"))()
+
+        loadstring(game:HttpGet(
+            "https://api.rubis.app/v2/scrap/DOb7SdjY8EOuXE4D/raw"
+        ))()
     end
 })
 
+--// Credits Tab
 local Credits = Window:CreateTab("Credits", 7734056608)
 
 Credits:CreateParagraph({
@@ -145,6 +226,7 @@ Credits:CreateParagraph({
     Content = "Made By MR_GAMING1141"
 })
 
+--// Welcome Notification
 Rayfield:Notify({
     Title = "IND HUB",
     Content = "Welcome! Made By MR_GAMING1141",
