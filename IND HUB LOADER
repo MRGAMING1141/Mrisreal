@@ -70,6 +70,15 @@ Main:CreateButton({
         loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/NvOBgkwE4WL6W3DM/raw"))()
     end
 })
+Main:CreateButton({
+    Name = "Jump To Steal A Soccer Player",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+        loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/fvhGRbqS7JEow9O6/raw"))()
+    end
+})
+```1
 
 Main:CreateButton({
     Name = "Kick A Lucky Block",
