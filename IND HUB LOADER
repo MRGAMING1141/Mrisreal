@@ -74,7 +74,15 @@ Main:CreateButton({
         ))()
     end
 })
-
+Main:CreateButton({
+    Name = "Muscle Legends 2",
+    Callback = function()
+        Rayfield:Destroy()
+        task.wait(0.1)
+      
+loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/8EkVg5lyGmfMDd7q/raw"))()
+    end
+})
 --// Muscle Beach Arena
 Main:CreateButton({
     Name = "Muscle Beach Arena",
