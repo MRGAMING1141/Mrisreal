@@ -80,7 +80,7 @@ Main:CreateButton({
         Rayfield:Destroy()
         task.wait(0.1)
       
-loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/AxOE2LLqLyx9JZZ0/raw"))()
+loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/7gKwgLBZ5PvzUMgP/raw"))()
     end
 })
 --// Muscle Beach Arena
