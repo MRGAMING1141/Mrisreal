@@ -56,9 +56,7 @@ Main:CreateButton({
         Rayfield:Destroy()
         task.wait(0.1)
 
-        loadstring(game:HttpGet(
-            "https://api.rubis.app/v2/scrap/3kP5jucTHjzgYul9/raw"
-        ))()
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/MRGAMING1141/IND-MUSCLE-MASTER-/refs/heads/main/leakd_obfuscated.lua.txt"))()
     end
 })
 
