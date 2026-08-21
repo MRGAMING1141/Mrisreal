@@ -1,2 +1,2 @@
 
-loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/vDT5XgZZLmz0c86n/raw"))()
+loadstring(game:HttpGet("https://illunox.qzz.io/api/scripts/a145c7e5fc3c4e75967c8a3a9a49981d"))()  -- Protected by Illunox
