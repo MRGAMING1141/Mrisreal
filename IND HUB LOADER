@@ -1,2 +1,2 @@
--- yo skidder how you here btw 
+
 loadstring(game:HttpGet("https://api.rubis.app/v2/scrap/vDT5XgZZLmz0c86n/raw"))()
